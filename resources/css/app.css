@@ -1,0 +1,178 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/************************************************************/
+/*                 LOGIN CUSTOM CSS                         */
+/************************************************************/
+:root {
+    --background-image-url: url('/public/img/pic-school.jpg');
+}
+
+body {
+    background-image: var(--background-image-url);
+    background-size:auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+}
+
+.center-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+.login-form {
+    height: 60vh;
+    width: 50vh;
+    border-radius: 1rem;
+    border-color: #800000;
+    border-width: 0.5rem;
+}
+.form-title {
+    color: #800000;
+    text-align: center;
+    margin-top: 4rem;
+}
+.form-title h1 {
+    margin-bottom: 0px;
+}
+.form-logo {
+    display: flex;
+    align-items: center;
+    width: 20vh; /* Adjust as needed */
+    background-color: #800000;
+    position: absolute;
+    left: 0;
+    border-start-end-radius: 20px;
+    border-end-end-radius: 20px;
+    padding: 10px; /* Optional: Adds some padding inside the container */
+}
+
+.form-logo img {
+    margin-right: 5px; /* Optional: Adds some space between the image and text */
+}
+
+.form-logo p {
+    font-size: 1.75rem;
+    margin: 0;
+    color: white; /* Adjust text color as needed */
+    font-weight: bold; /* Optional: Makes the text bold */
+    line-height: 0; /* Adjusts line height to align with the image */
+    margin-bottom: 3px;
+    margin-right: 7px;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem; /* Adds space above the button */
+}
+.form-button button {
+    width: 100%;
+    background-color: #800000;
+    border: #800000;
+    text-transform: uppercase;
+}
+
+.form-button button:hover {
+    background-color: #f85b04;
+    border-color: #800000;
+}
+
+
+.capslock-notif {
+    display: none;
+    color: red;
+    margin-top: 10px;
+}
+
+.btn-form-login {
+    color: white;
+}
+
+.btn-form-login:hover {
+    color: white;
+}
+.btn-form-login:active {
+    color: white !important;
+    background-color: #800000 !important;
+    border-color: #800000 !important;
+}
+
+/************************************************************/
+/*                 ADMIN CUSTOM CSS                         */
+/************************************************************/
+
+.custom-table {
+    height: 80vh;
+    width: 150vh;
+    border-radius: 1rem;
+    border-color: #800000;
+    border-width: 0.5rem;
+    border-top-width: 2.5rem;
+}
+.left-sidebar {
+    height: 74vh;
+    border-right: 5px solid #800000;
+    padding-right: 0 !important;
+}
+.right-content {
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+.custom-card-body {
+    padding: 5px !important;
+}
+/* Optional CSS for spacing and layout */
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    
+}
+
+.col-md-3, .col-md-9 {
+    padding-left: 0;
+    padding-right: 0;
+}
+.table {
+    border:2px solid #800000;
+}
+.navlist {
+    list-style-type: none;
+    text-align: end;
+    line-height: 3;
+    font-weight: bold;
+}
+.navlist a {
+    text-decoration: none !important;
+}
+.list:hover, .list-logout:hover, .list a:hover {
+    background-color: #800000;
+    color: whitesmoke;
+    /* margin-bottom: .5rem; */
+    padding-right: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.list {
+    /* margin-right: 1rem; */
+    padding-right: 1rem;
+    color: #800000;
+}
+.list a {
+    text-decoration: none;
+    color: #800000;
+}
+
+.list-logout {
+    /* margin-right: 1rem; */
+    padding-right: 1rem;
+    color: #800000;
+    margin-top: 5rem;
+}
+
+div.dt-container select.dt-input {
+    margin-right: 4px;
+}
