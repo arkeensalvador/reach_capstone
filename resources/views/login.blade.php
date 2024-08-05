@@ -33,7 +33,7 @@
                     <img src="{{ asset('img/logo-school.png') }}" alt="School Logo" width="35">
                     <p>REACH</p>
                 </div>
-                <form action="#">
+                <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="form-title">
                         <h1>HELLO!</h1>
