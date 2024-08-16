@@ -8,7 +8,7 @@
             <div class="col-md-6 p-0">
                 <form method="GET" action="{{ route('student.request_logs') }}" class="d-flex justify-content-end">
                     <label for="">Filter Status</label>
-                    <select name="status" class="form-select me-2" onchange="this.form.submit()">
+                    <select name="status" class="form-select" onchange="this.form.submit()">
                         <option value="">All Statuses</option>
                         <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Pending</option>
                         <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Approved</option>

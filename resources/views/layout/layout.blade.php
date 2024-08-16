@@ -48,7 +48,7 @@
             });
         </script>
     @endif
-    <div class="container-fluid center-card">
+    {{-- <div class="container-fluid center-card">
         <div class="card custom-table">
             <div class="row">
                 <div class="col-md-2 left-sidebar">
@@ -62,7 +62,21 @@
             </div>
 
         </div>
+    </div> --}}
+
+    <div class="container-fluid p-0">
+        <div class="row no-gutters min-vh-100">
+            <div class="col-md-2 p-2 left-sidebar d-flex flex-column">
+                @include('layout.sidebar')
+            </div>
+            <div class="col-md-10 right-content d-flex flex-column">
+                <div class="card-body p-2 flex-grow-1 overflow-auto">
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
+    
 </body>
 
 </html>

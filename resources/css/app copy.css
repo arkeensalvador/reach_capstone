@@ -145,167 +145,104 @@ body {
 /************************************************************/
 /*                 ADMIN CUSTOM CSS                         */
 /************************************************************/
-/* Flexbox-based responsive layout with integrated custom styles */
 
-html, body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
-.container-fluid {
-    padding: 0;
-    /* background-color: whitesmoke; */
-}
-
-.row.no-gutters {
-    margin: 0;
-    height: 100vh;
-}
-
-/* Sidebar */
-.left-sidebar {
-    height: 100%;
-    border-right: 5px solid #800000;
-    padding-right: 0 !important;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: whitesmoke;
-}
-
-/* Content Area */
-.right-content {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    height: 100vh;
-    background-color: whitesmoke;
-    overflow: hidden;
-}
-
-/* Card Body with Overflow Handling */
-.custom-card-body {
-    flex-grow: 1;
-    padding: 5px !important;
-    overflow-y: auto;
-}
-
-/* Custom Table */
 .custom-table {
     height: 90vh;
-    width: 100%; /* Adjust width to be responsive */
-    max-width: 180vh;
+    width: 180vh;
     border-radius: 1rem;
     border-color: #800000;
     border-width: 0.5rem;
     border-top-width: 2.5rem;
 }
-
-/* Table Handling */
-.table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
+.left-sidebar {
+    height: 90vh;
+    border-right: 5px solid #800000;
+    padding-right: 0 !important;
+}
+.right-content {
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+.custom-card-body {
+    padding: 5px !important;
+}
+/* Optional CSS for spacing and layout */
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
+.col-md-3,
+.col-md-9 {
+    padding-left: 0;
+    padding-right: 0;
+}
 .table {
     border: 2px solid #800000;
-    width: 100%;
-    max-width: 100%;
-    table-layout: auto;
 }
-
-/* Navigation */
 .navlist {
     list-style-type: none;
     text-align: end;
     line-height: 3;
     font-weight: bold;
 }
-
 .navlist a {
     text-decoration: none !important;
 }
-
-.list, .list-logout {
+.list:hover,
+.list-logout:hover,
+.list a:hover {
+    background-color: #800000;
+    color: whitesmoke;
+    /* margin-bottom: .5rem; */
+    padding-right: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.list {
+    /* margin-right: 1rem; */
     padding-right: 1rem;
     color: #800000;
 }
-
-.list-logout {
-    margin-top: 5rem;
-}
-
 .list a {
     text-decoration: none;
     color: #800000;
 }
 
-.list:hover, .list-logout:hover, .list a:hover {
-    background-color: #800000;
-    color: whitesmoke;
+.list-logout {
+    /* margin-right: 1rem; */
     padding-right: 1rem;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    color: #800000;
+    margin-top: 5rem;
 }
 
+div.dt-container select.dt-input {
+    margin-right: 4px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 60vh;
+}
+.card {
+    margin: 5px;
+}
 .active {
     background-color: #800000;
     color: whitesmoke;
+    /* margin-bottom: .5rem; */
     padding-right: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
 
-/* Student Home Box */
-.student-home-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60vh; /* Box takes the full height of the container */
-    background-color: #800000;
-    padding: 20px;
-    border-top-right-radius: 4rem;
-    border-bottom-left-radius: 4rem;
-}
-
-.student-home-box img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* Text Styling */
-.request-text {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: bold;
-    font-size: 30px;
+.custom-hr {
+    height: 1rem;
     color: #800000;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.online-text {
-    font-family: "Impact", sans-serif;
-    font-weight: bold;
-    font-size: 42px;
-    color: #ff6600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.custom-badge-bg-student {
-    --bs-bg-opacity: 1;
-    background-color: #ff6600 !important;
-}
-
-/* DataTable Fixes */
-.dataTables_wrapper {
-    width: 100%;
 }
 
 table.dataTable th.dt-type-numeric,
@@ -327,50 +264,49 @@ table.dataTable tfoot td {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    /* font-family: 'Bebas Neue', sans-serif; */
+    /* letter-spacing: 5px; */
+    /* font-size: 1.3rem; */
     font-weight: bold;
 }
 
-.card-container {
+.student-home-box {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    overflow-y: scroll;
-    max-height: 60vh;
+    height: 60vh; /* Ensure the box takes the full height of the container */
+    background-color: #800000; /* Optional: Add a background color */
+    padding: 20px;
+    border-top-right-radius: 4rem;
+    border-bottom-left-radius: 4rem;
 }
 
-.card {
-    margin: 5px;
+.student-home-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the logo is contained within the box */
 }
 
-/* Spacing Fixes */
-.row {
-    margin-left: 0;
-    margin-right: 0;
+/* Style for the "REQUEST YOUR REQUIREMENTS" text */
+.request-text {
+    font-family: "Bebas Neue", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 30px; /* Adjust the size as needed */
+    color: #800000; /* Dark red color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
 }
 
-.col-md-3, .col-md-9 {
-    padding-left: 0;
-    padding-right: 0;
+/* Style for the "VIA ONLINE" text */
+.online-text {
+    font-family: "Impact", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 42px; /* Adjust the size as needed */
+    color: #ff6600; /* Bright orange color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
 }
-
-.custom-hr {
-    height: 1rem;
-    color: #800000;
+.custom-badge-bg-student {
+    --bs-bg-opacity: 1;
+    background-color: #ff6600 !important;
 }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .custom-table {
-        width: 100%; /* Adjust table to fit smaller screens */
-    }
-    
-    .left-sidebar {
-        border-right: none;
-        height: auto;
-    }
-
-    .right-content {
-        height: auto;
-    }
-}
-
