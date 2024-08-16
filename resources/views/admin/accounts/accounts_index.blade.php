@@ -1,24 +1,5 @@
 @extends('layout.layout')
 @section('content')
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success',
-                text: "{{ session('success') }}",
-            });
-        </script>
-    @endif
-
-    @if (session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: "{{ session('error') }}",
-            });
-        </script>
-    @endif
     <div class="container-fluid">
         <div class="row align-items-center mb-3">
             <div class="col-md-6 p-0">

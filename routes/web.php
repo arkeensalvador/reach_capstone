@@ -32,6 +32,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         return view('admin.reports.reports_index');
     });
 
+    Route::get('/add-forms', function () {
+        return view('admin.forms.create_forms');
+    });
+
     // REGISTRAR ROUTES
     Route::get('/registrar-accounts', [AdminController::class, 'show_registrar_accounts'])->name('registrar.accounts');
     Route::post('/create-reg-acc', [AdminController::class, 'add_registrar'])->name('create.registrar');
@@ -45,10 +49,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'student'])->group(function () {
     Route::get('/student-home', [StudentController::class, 'student_index']);
+    Route::get('/student-requests', [StudentController::class, 'student_request_index'])->name('student.student_request');
+    Route::post('/student-requests-add', [StudentController::class, 'student_request_add'])->name('student.request');
+    Route::get('/student-logs', [StudentController::class, 'show_request_logs'])->name('student.logs');
+    Route::get('/student/request-logs', [StudentController::class, 'show_request_logs'])->name('student.request_logs');
+    Route::get('/student/check-pending-requests', [StudentController::class, 'checkPendingRequestsStudent'])->name('checkPendingRequestsStudent');
 });
 
 Route::middleware(['auth', 'registrar'])->group(function () {
     Route::get('/registrar-home', [RegistrarController::class, 'registrar_index']);
+    Route::get('/registrar-logs', [RegistrarController::class, 'show_request_logs'])->name('registrar.logs');
+    Route::post('/update-status', [RegistrarController::class, 'updateStatus'])->name('updateStatus');
+    Route::get('/fetch-request-logs', [RegistrarController::class, 'fetchRequestLogs'])->name('fetchRequestLogs');
+    Route::get('/registrar/request-logs', [RegistrarController::class, 'show_request_logs'])->name('registrar.request_logs');
+    Route::get('/registrar/check-pending-requests', [RegistrarController::class, 'checkPendingRequestsRegistrar'])->name('checkPendingRequestsRegistrar');
 });
 
 

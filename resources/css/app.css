@@ -110,7 +110,6 @@ body {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    
 }
 .form-button button {
     width: 100%;
@@ -148,15 +147,15 @@ body {
 /************************************************************/
 
 .custom-table {
-    height: 80vh;
-    width: 150vh;
+    height: 90vh;
+    width: 180vh;
     border-radius: 1rem;
     border-color: #800000;
     border-width: 0.5rem;
     border-top-width: 2.5rem;
 }
 .left-sidebar {
-    height: 74vh;
+    height: 90vh;
     border-right: 5px solid #800000;
     padding-right: 0 !important;
 }
@@ -239,4 +238,75 @@ div.dt-container select.dt-input {
     padding-right: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
+}
+
+.custom-hr {
+    height: 1rem;
+    color: #800000;
+}
+
+table.dataTable th.dt-type-numeric,
+table.dataTable th.dt-type-date,
+table.dataTable td.dt-type-numeric,
+table.dataTable td.dt-type-date,
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable tfoot th,
+table.dataTable tfoot td {
+    text-align: left !important;
+}
+
+.request-button {
+    background-color: #800000;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    /* font-family: 'Bebas Neue', sans-serif; */
+    /* letter-spacing: 5px; */
+    /* font-size: 1.3rem; */
+    font-weight: bold;
+}
+
+.student-home-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; /* Ensure the box takes the full height of the container */
+    background-color: #800000; /* Optional: Add a background color */
+    padding: 20px;
+    border-top-right-radius: 4rem;
+    border-bottom-left-radius: 4rem;
+}
+
+.student-home-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the logo is contained within the box */
+}
+
+/* Style for the "REQUEST YOUR REQUIREMENTS" text */
+.request-text {
+    font-family: "Bebas Neue", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 30px; /* Adjust the size as needed */
+    color: #800000; /* Dark red color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
+}
+
+/* Style for the "VIA ONLINE" text */
+.online-text {
+    font-family: "Impact", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 42px; /* Adjust the size as needed */
+    color: #ff6600; /* Bright orange color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
+}
+.custom-badge-bg-student {
+    --bs-bg-opacity: 1;
+    background-color: #ff6600 !important;
 }

@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id('transaction_ID');
-            $table->string('student_ID');
-            $table->string('form_ID');
+            $table->string('user_ID');
+            $table->string('lname');
+            $table->string('mname');
+            $table->string('fname');
+            $table->string('sex');
+            $table->string('address');
+            $table->string('doc_requested');
             $table->string('e_signature');
             $table->boolean('status')->default('0');
             $table->timestamps();
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('transactions');
     }
 };
