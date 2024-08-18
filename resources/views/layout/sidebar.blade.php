@@ -42,13 +42,6 @@
                         REPORTS
                     </li>
                 </a>
-
-                {{-- <a href="{{ url('forms-index') }}">
-                    <li
-                        class="list mt-3 {{ Request::is('registrar-accounts', 'create-registrar-account', 'registrar-accounts/*/edit') ? 'active' : '' }}">
-                        FORMS
-                    </li>
-                </a> --}}
             @endif
 
             @if (Auth::user()->userType == 'registrar')
@@ -57,17 +50,18 @@
                         DASHBOARD
                     </li>
                 </a>
-                <a href="{{ url('registrar-records') }}">
-                    <li class="list mt-3 {{ Request::is('registrar-records') ? 'active' : '' }}">
+                <a href="{{ url('enroll-student') }}">
+                    <li class="list mt-3 {{ Request::is('enroll-student') ? 'active' : '' }}">
+                        ENROLL
+                    </li>
+                </a>
+                <a href="{{ url('registrar-year') }}">
+                    <li
+                        class="list mt-3 {{ Request::is('registrar-records', 'registrar-student-data', 'registrar-year', 'registrar-section') ? 'active' : '' }}">
                         RECORDS
                     </li>
                 </a>
-                {{-- <a href="{{ url('registrar-requests') }}">
-                    <li
-                        class="list mt-3 {{ Request::is('registrar-requests') ? 'active' : '' }}">
-                        REQUESTS
-                    </li>
-                </a> --}}
+
                 <script>
                     function checkForNewRequestsRegistrar() {
                         $.ajax({
@@ -114,10 +108,7 @@
                 </a>
             @endif
 
-
-            <a href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); confirmLogout();">
                 <li class="list mt-3">
                     {{ __('LOGOUT') }}
                 </li>

@@ -62,6 +62,7 @@ Route::middleware(['auth', 'registrar'])->group(function () {
     Route::get('/registrar-section/{year}/{section}', [RegistrarController::class, 'records_data_index'])->name('registrar-section');
     Route::get('/section-select/{year}', [RegistrarController::class, 'section_select_index'])->name('section-select');
     
+   
     Route::get('/registrar-logs', [RegistrarController::class, 'show_request_logs'])->name('registrar.logs');
     Route::post('/update-status', [RegistrarController::class, 'updateStatus'])->name('updateStatus');
     Route::get('/fetch-request-logs', [RegistrarController::class, 'fetchRequestLogs'])->name('fetchRequestLogs');

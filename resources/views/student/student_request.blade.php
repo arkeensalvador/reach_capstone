@@ -43,8 +43,7 @@
                 <small>
                     <i class="fa-solid fa-circle-info"></i>
                     <i>
-                        No E-signature? We got you! You can click the link to generate your E-Signature
-                        <a href="https://signaturely.com/online-signature/" target="_blank">https://signaturely.com/online-signature/</a>
+                        No E-signature? We got you! You can click the <a href="https://signaturely.com/online-signature/" target="_blank">link</a> to generate your E-Signature
                     </i>
                 </small>
             </div>
