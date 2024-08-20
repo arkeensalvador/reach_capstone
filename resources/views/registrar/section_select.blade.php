@@ -9,7 +9,7 @@
                 <a href="{{ route('registrar-section', ['year' => request()->year, 'section' => $sec->section]) }}" class="text-center">
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $sec->section }}</h5>
+                            <h5 class="card-title m-0">{{ $sec->section }}</h5>
                         </div>
                     </div>
                 </a>

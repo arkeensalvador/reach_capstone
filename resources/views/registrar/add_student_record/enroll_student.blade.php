@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('content')
     <div>
-        <h1>ENROLL STUDENT</h1>
+        <h1>ADD STUDENT RECORD</h1>
     </div>
     <hr class="custom-hr">
     <div class="card-container">
@@ -36,8 +36,8 @@
             </div>
 
             <div class="col-md-6">
-                <label for="level_to_be_enrolled" class="form-label">Level to be enrolled <i>(e.g Grade-11, Grade-12)</i></label>
-                <input type="text" class="form-control" name="level_to_be_enrolled" id="level_to_be_enrolled" placeholder="E.g Grade 11" required>
+                <label for="level_to_be_enrolled" class="form-label">Level to be enrolled</label>
+                <input type="text" class="form-control" name="level_to_be_enrolled" id="level_to_be_enrolled" value="Grade 10" disabled required>
             </div>
             <div class="col-md-6">
                 <label for="academic_year" class="form-label">Academic Year <i>(e.g 2020-2021, 2021-2022)</i></label>

@@ -20,7 +20,7 @@
                 </form>
             </div>
         </div>
-        <table id="example" class="table table-striped" style="width:100%;">
+        <table id="student-logs" class="table table-striped" style="width:100%;">
             <thead>
                 <tr>
                     <th>DOCUMENT REQUESTED</th>

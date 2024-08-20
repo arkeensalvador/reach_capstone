@@ -4,15 +4,15 @@
         <h1>{{ $section }} {{ $year }} STUDENT RECORDS</h1>
     </div>
 
-    <table id="example" class="table table-striped" style="width:100%">
+    <table id="student-records" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Sex</th>
                 <th>Address</th>
                 {{-- <th>Section</th> --}}
-                <th>Guardian's Name</th>
-                <th>Contact</th>
+                {{-- <th>Guardian's Name</th> --}}
+                <th>Guardian's Contact #</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -23,11 +23,12 @@
                     <td>{{ $student->sex }}</td>
                     <td>{{ $student->address }}</td>
                     {{-- <td>{{ $student->section }}</td> --}}
-                    <td>{{ $student->guardians_name }}</td>
+                    {{-- <td>{{ $student->guardians_name }}</td> --}}
                     <td>{{ $student->guardians_contact }}</td>
                     <td>
+                        <a href="#" class="btn btn-secondary">View</a>
                         <a href="#" class="btn btn-info">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
+                        <a href="#" class="btn btn-danger">Archive</a>
                     </td>
                 </tr>
             @endforeach

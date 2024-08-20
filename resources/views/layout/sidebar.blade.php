@@ -57,7 +57,7 @@
                 </a>
                 <a href="{{ url('registrar-year') }}">
                     <li
-                        class="list mt-3 {{ Request::is('registrar-records', 'registrar-student-data', 'registrar-year', 'registrar-section') ? 'active' : '' }}">
+                        class="list mt-3 {{ Request::is('registrar-records', 'registrar-section/*', 'registrar-year', 'registrar-section', 'section-select/*') ? 'active' : '' }}">
                         RECORDS
                     </li>
                 </a>
@@ -77,7 +77,7 @@
                         });
                     }
                     checkForNewRequestsRegistrar();
-                    setInterval(checkForNewRequestsRegistrar, 1000);
+                    setInterval(checkForNewRequestsRegistrar, 10000);
                 </script>
 
                 <a href="{{ url('registrar-logs') }}">
@@ -153,5 +153,5 @@
     // checkForNewRequestsRegistrar();
     checkForNewRequestsStudent();
     // setInterval(checkForNewRequestsRegistrar, 1000);
-    setInterval(checkForNewRequestsStudent, 1000);
+    setInterval(checkForNewRequestsStudent, 10000);
 </script>

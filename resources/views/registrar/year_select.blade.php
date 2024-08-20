@@ -13,9 +13,9 @@
             @foreach ($academic_years as $year)
                 <div class="col-md-4">
                     <a href="{{ route('section-select', ['year' => $year->academic_year]) }}" class="text-center">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $year->academic_year }}</h5>
+                                <h5 class="card-title m-0">{{ $year->academic_year }}</h5>
                             </div>
                         </div>
                     </a>

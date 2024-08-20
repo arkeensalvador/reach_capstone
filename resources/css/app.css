@@ -256,7 +256,7 @@ html, body {
 .active {
     background-color: #800000;
     color: whitesmoke;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
