@@ -4,7 +4,7 @@
         <h1>{{ $section }} {{ $year }} STUDENT RECORDS</h1>
     </div>
 
-    <table id="student-records" class="table table-striped" style="width:100%">
+    <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>Name</th>

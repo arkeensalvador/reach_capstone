@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\student\StudentController;
 use App\Http\Controllers\registrar\RegistrarController;
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', function () {
     return view('auth.login');
