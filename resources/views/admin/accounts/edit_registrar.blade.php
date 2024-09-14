@@ -93,7 +93,7 @@
             </div>
 
             <div class="col-12">
-                <a href="{{ url('registrar-accounts') }}" class="btn btn-secondary">Back</a>
+                <a href="{{ url('admin/registrar-accounts') }}" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">
                     {{ __('Update Account') }}
                 </button>

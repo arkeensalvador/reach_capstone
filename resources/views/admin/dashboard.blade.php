@@ -1,92 +1,169 @@
 @extends('layout.layout')
+
 @section('content')
     <section class="content">
-        <div class="container-fluid p-0" style="overflow-y: auto">
-            <!-- Small boxes (Stat box) -->
-            <div class="row">
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="card text-bg-info mb-3">
-                        <div class="card-body">
-                            <h3 class="card-title">150</h3>
-                            <p class="card-text">New Requests</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <span>More info</span>
-                            <i class="fas fa-arrow-circle-right"></i>
+        <div class="container-fluid p-0">
+            <!-- Stat Boxes -->
+            <div class="row mb-4">
+                @foreach ([['info', 'totalTransaction', 'Total Request'], ['success', 'approvedTransaction', 'Total Approved Requests'], ['danger', 'rejectedTransaction', 'Total Rejected Requests'], ['warning', 'pendingTransaction', 'Total Pending Requests'], ['primary', 'totalStudents', 'Total Enrolled Students'], ['secondary', 'totalRegistrar', 'Total Registrar Accounts']] as $stat)
+                    <div class="col-lg-3 col-6">
+                        <div class="card text-bg-{{ $stat[0] }} mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">{{ ${$stat[1]} }}</h3>
+                                <p class="card-text">{{ $stat[2] }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="card text-bg-success mb-3">
-                        <div class="card-body">
-                            <h3 class="card-title">53<sup style="font-size: 20px">%</sup></h3>
-                            <p class="card-text">Students</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <span>More info</span>
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="card text-bg-warning mb-3">
-                        <div class="card-body">
-                            <h3 class="card-title">44</h3>
-                            <p class="card-text">User Registrations</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <span>More info</span>
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="card text-bg-danger mb-3">
-                        <div class="card-body">
-                            <h3 class="card-title">65</h3>
-                            <p class="card-text">Rejected Requests</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between align-items-center">
-                            <span>More info</span>
-                            <i class="fas fa-arrow-circle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
+                @endforeach
             </div>
-            {{-- CHARTS --}}
+
+            <!-- Analytics Charts -->
+            <hr>
+            <h2>Analytics</h2>
             <div class="row">
                 <div class="col-lg-6">
-                    Sample Chart
-                    <div id="chart"></div>
+                    <div id="chart" class="pt-3"></div>
                 </div>
 
                 <div class="col-lg-6">
+                    <form method="GET" action="{{ route('admin.index') }}">
+                        <label for="academic_year">Select Academic Year:</label>
+                        <select id="academic_year" class="form-control" name="academic_year" onchange="this.form.submit()">
+                            <option value="" selected disabled>Select AY</option>
+                            @foreach ($academicYears as $year)
+                                <option value="{{ $year }}" {{ $year == $selectedYear ? 'selected' : '' }}>
+                                    {{ $year }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
                     <div id="chart2"></div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="doc-requested"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div id="passed"></div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    
     <script>
+        // TOTAL NUMBER OF REQUEST PER MONTH
+        document.addEventListener('DOMContentLoaded', function() {
+            var options1 = {
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                series: [{
+                    name: 'Transactions',
+                    data: @json(array_values($transactionsPerMonth))
+                }],
+                xaxis: {
+                    categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                        'September', 'October', 'November', 'December'
+                    ]
+                },
+                title: {
+                    text: 'Total Transactions Per Month',
+                    align: 'center'
+                }
+            };
+
+            var chart1 = new ApexCharts(document.querySelector("#chart"), options1);
+            chart1.render();
+
+            // TOTAL STUDENT PER SECTION AND ACADEMIC YEAR
+            var options2 = {
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                series: [{
+                    name: 'Students',
+                    data: @json(array_values($sectionCounts))
+                }],
+                xaxis: {
+                    categories: @json(array_keys($sectionCounts))
+                },
+                title: {
+                    text: 'Total Students Per Section for {{ $selectedYear }}',
+                    align: 'center'
+                }
+            };
+
+            var chart2 = new ApexCharts(document.querySelector("#chart2"), options2);
+            chart2.render();
+        });
+
+        // DOC REQUESTED
+        var options = {
+            chart: {
+                type: 'donut'
+            },
+            series: [{{ $form137Count }}, {{ $goodMoralCount }}],
+            labels: ['FORM 137', 'GOOD MORAL'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }],
+            title: {
+                text: 'Total # of Document Requested',
+                align: 'center'
+            }
+        }
+
+        var doc_requested = new ApexCharts(document.querySelector("#doc-requested"), options);
+        doc_requested.render();
+
+
+        // Prepare the data from the PHP variable
+        var passFailStats = @json($passFailStats);
+
+        // Extract labels and series data
+        var labels = passFailStats.map(function(item) {
+            return item.year;
+        });
+
+        var totalStudents = passFailStats.map(function(item) {
+            return item.total_count;
+        });
+
+        var passedStudents = passFailStats.map(function(item) {
+            return item.passed_count;
+        });
+
+        var failedStudents = passFailStats.map(function(item) {
+            return item.failed_count;
+        });
+
         var options = {
             series: [{
-                name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-            }, {
-                name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-            }, {
-                name: 'Free Cash Flow',
-                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-            }],
+                    name: 'Total Students',
+                    data: totalStudents
+                },
+                {
+                    name: 'Passed Students',
+                    data: passedStudents
+                },
+                {
+                    name: 'Failed Students',
+                    data: failedStudents
+                }
+            ],
             chart: {
                 type: 'bar',
                 height: 350
@@ -94,12 +171,12 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '55%',
-                    endingShape: 'rounded'
-                },
+                    stacked: true,
+                    barHeight: '50%',
+                }
             },
             dataLabels: {
-                enabled: false
+                enabled: true,
             },
             stroke: {
                 show: true,
@@ -107,11 +184,16 @@
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: labels
             },
             yaxis: {
                 title: {
-                    text: '$ (thousands)'
+                    text: 'Number of Students'
+                },
+                labels: {
+                    formatter: function(val) {
+                        return parseInt(val);
+                    }
                 }
             },
             fill: {
@@ -120,36 +202,13 @@
             tooltip: {
                 y: {
                     formatter: function(val) {
-                        return "$ " + val + " thousands"
+                        return parseInt(val);
                     }
                 }
             }
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-
-        var options = {
-          series: [44, 55, 13, 43, 22],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-
-        var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
-        chart2.render();
+        var passed = new ApexCharts(document.querySelector("#passed"), options);
+        passed.render();
     </script>
 @endsection

@@ -20,6 +20,13 @@ class StudentRecords extends Model
         'guardians_contact',
         'section',
         'adviser',
-        'academic_year'
+        'mother_name',
+        'academic_year',
     ];
+
+    // Define the relationship with the Grades model
+    public function grades()
+    {
+        return $this->hasMany(Grade::class, 'studentID');
+    }
 }

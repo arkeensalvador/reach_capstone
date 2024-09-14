@@ -252,8 +252,10 @@ html, body {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
-
-.active {
+.form-select-sm {
+    width: fit-content;
+}
+li.active {
     background-color: #800000;
     color: whitesmoke;
     /* padding-right: 1rem; */
@@ -332,10 +334,10 @@ table.dataTable tfoot td {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     /* overflow-y: scroll; */
-    max-height: 60vh;
+    /* max-height: 60vh; */
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -376,4 +378,55 @@ table.dataTable tfoot td {
 
 a {
     text-decoration: none;
+}
+div.dt-container .dt-paging .dt-paging-button {
+    padding: 0 !important;
+}
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-select {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.custom-select select {
+    display: none; /* Hide the default dropdown */
+}
+
+.custom-select-items {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 150px; /* Adjust height as needed */
+    overflow-y: auto;
+    width: 100%;
+    z-index: 1000;
+}
+
+.custom-select-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.custom-select-item:hover {
+    background-color: #f1f1f1;
+}
+/* Match Select2 height with other form controls */
+.select2-container--default .select2-selection--single {
+    height: 2.4rem !important; /* Adjust the height as needed */
+    padding: 0.3rem 0.2rem; /* Adjust padding to match the form controls */
+    border: 1px solid #ced4da; /* Border color to match */
+    border-radius: 0.25rem; /* Border radius to match */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 1.5; /* Adjust line height to align text properly */
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%; /* Make sure the arrow height matches */
 }

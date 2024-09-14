@@ -26,19 +26,19 @@
                         DASHBOARD
                     </li>
                 </a>
-                <a href="{{ url('records') }}">
-                    <li class="list mt-2 {{ Request::is('records', 'section', 'records-data') ? 'active' : '' }}">
+                <a href="{{ url('admin/student-records') }}">
+                    <li class="list mt-2 {{ Request::is('admin/student-records', 'admin/edit-student/*', 'admin/view-grades/*') ? 'active' : '' }}">
                         RECORDS
                     </li>
                 </a>
-                <a href="{{ url('registrar-accounts') }}">
+                <a href="{{ url('admin/registrar-accounts') }}">
                     <li
-                        class="list mt-2 {{ Request::is('registrar-accounts', 'create-registrar-account', 'registrar-accounts/*/edit') ? 'active' : '' }}">
+                        class="list mt-2 {{ Request::is('admin/registrar-accounts', 'admin/create-registrar-account', 'admin/registrar-accounts/*/edit') ? 'active' : '' }}">
                         ACCOUNTS
                     </li>
                 </a>
-                <a href="{{ url('reports') }}">
-                    <li class="list mt-2 {{ Request::is('reports') ? 'active' : '' }}">
+                <a href="{{ url('admin/reports') }}">
+                    <li class="list mt-2 {{ Request::is('admin/reports') ? 'active' : '' }}">
                         REPORTS
                     </li>
                 </a>
@@ -55,9 +55,9 @@
                         ENROLL
                     </li>
                 </a>
-                <a href="{{ url('registrar-year') }}">
+                <a href="{{ url('student-records') }}">
                     <li
-                        class="list mt-3 {{ Request::is('registrar-records', 'registrar-section/*', 'registrar-year', 'registrar-section', 'section-select/*') ? 'active' : '' }}">
+                        class="list mt-3 {{ Request::is('student-records', 'view-grades/*', 'import-form') ? 'active' : '' }}">
                         RECORDS
                     </li>
                 </a>

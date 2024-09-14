@@ -18,7 +18,13 @@ class Transaction extends Model
         'sex',
         'address',
         'doc_requested',
-        'e_signature',
+        'mother_name',
         'status'
     ];
+
+     // Define the relationship with the Grades model
+     public function documents()
+     {
+         return $this->hasMany(DocumentUpload::class, 'transaction_id');
+     }
 }

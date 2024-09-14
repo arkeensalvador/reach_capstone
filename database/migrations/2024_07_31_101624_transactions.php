@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('sex');
             $table->string('address');
             $table->string('doc_requested');
-            $table->string('e_signature');
+            $table->string('date_released')->nullable();
+            $table->string('mother_name');
+            $table->text('rejection_reason')->nullable();
             $table->boolean('status')->default('0');
             $table->timestamps();
         });

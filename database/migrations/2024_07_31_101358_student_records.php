@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('student_records', function (Blueprint $table) {
             $table->id();
-            // $table->string('student_ID')->nullable();
             $table->string('lastname');
             $table->string('firstname');
             $table->string('middlename');
-            // $table->string('birthdate');
             $table->string('sex');
             $table->string('address');
 
@@ -26,9 +24,7 @@ return new class extends Migration
             $table->string('guardians_contact');
             $table->string('adviser');
             $table->string('section');
-            
-            // $table->string('subject_ID')->nullable();
-            // $table->string('section_ID')->nullable();
+            $table->string('mother_name');
             $table->string('academic_year')->nullable();
             $table->timestamps();
         });

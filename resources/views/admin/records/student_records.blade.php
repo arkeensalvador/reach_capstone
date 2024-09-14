@@ -6,18 +6,15 @@
             <div class="col-md-6 p-0">
                 <h1>STUDENT RECORDS</h1>
             </div>
-            <div class="col-md-6 p-0 text-end"> <!-- Changed align-right to text-right -->
-                <a href="{{url('import-form')}}" class="btn btn-success">Import records</a>
-            </div>
         </div>
 
         <!-- Filter Form Below the Heading -->
         <div class="row mb-3">
-            <div class="col-md-8 p-0">
-                <form id="filter-form" class="d-flex justify-content-start">
+            <div class="col-md-12 p-0">
+                <form id="filter-form2" class="d-flex justify-content-start">
                     <div class="col-4 ms-2">
                         <label for="academic-year-filter" class="form-label">Academic Year:</label>
-                        <select name="academic_year" id="academic-year-filter" class="form-select">
+                        <select name="academic_year" id="academic-year-filter2" class="form-select">
                             <option value="">Select AY</option>
                             @foreach ($academicYears as $year)
                                 <option value="{{ $year }}">{{ $year }}</option>
@@ -27,7 +24,7 @@
 
                     <div class="col-4 ms-2">
                         <label for="section-filter" class="form-label">Section:</label>
-                        <select name="section" id="section-filter" class="form-select">
+                        <select name="section" id="section-filter2" class="form-select">
                             <option value="">Select Section</option>
                             @foreach ($sections as $section)
                                 <option value="{{ $section }}">{{ $section }}</option>
@@ -39,7 +36,7 @@
         </div>
 
         <!-- Student Records Table -->
-        <table id="student-records" class="table table-striped" style="width:100%;">
+        <table id="student-records2" class="table table-striped" style="width:100%;">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -57,12 +54,12 @@
         <!-- Placeholder for No Data Message -->
     </div>
 
-    <div id="no-data-message" class="alert alert-warning" style="display: none;">
+    <div id="no-data-message2" class="alert alert-warning" style="display: none;">
         Please select an Academic Year or Section to view data.
     </div>
-
+    
     <!-- View Student Modal -->
-    <div class="modal fade" id="viewStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="viewStudentModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -70,16 +67,16 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Full Name:</strong> <span id="studentFullName"></span></p>
-                    <p><strong>Sex:</strong> <span id="studentSex"></span></p>
-                    <p><strong>Address:</strong> <span id="studentAddress"></span></p>
-                    <p><strong>Guardian's Name:</strong> <span id="studentGuardiansName"></span></p>
-                    <p><strong>Guardian's Contact:</strong> <span id="studentGuardiansContact"></span></p>
-                    <p><strong>Grade Level:</strong> <span id="studentLevelToBeEnrolled"></span></p>
-                    <p><strong>Adviser:</strong> <span id="studentAdviser"></span></p>
-                    <p><strong>Section:</strong> <span id="studentSection"></span></p>
-                    <p><strong>Mother's Name:</strong> <span id="studentMotherName"></span></p>
-                    <p><strong>Academic Year:</strong> <span id="studentAcademicYear"></span></p>
+                    <p><strong>Full Name:</strong> <span id="studentFullName_admin"></span></p>
+                    <p><strong>Sex:</strong> <span id="studentSex_admin"></span></p>
+                    <p><strong>Address:</strong> <span id="studentAddress_admin"></span></p>
+                    <p><strong>Guardian's Name:</strong> <span id="studentGuardiansName_admin"></span></p>
+                    <p><strong>Guardian's Contact:</strong> <span id="studentGuardiansContact_admin"></span></p>
+                    <p><strong>Grade Level:</strong> <span id="studentLevelToBeEnrolled_admin"></span></p>
+                    <p><strong>Adviser:</strong> <span id="studentAdviser_admin"></span></p>
+                    <p><strong>Section:</strong> <span id="studentSection_admin"></span></p>
+                    <p><strong>Mother's Name:</strong> <span id="studentMotherName_admin"></span></p>
+                    <p><strong>Academic Year:</strong> <span id="studentAcademicYear_admin"></span></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -91,7 +88,7 @@
     <!-- Add subject and grades Modal -->
     <div class="modal fade" id="addGradesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="{{ route('store.grades') }}" method="POST">
+            <form action="{{ route('store.grades.admin') }}" method="POST">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
@@ -106,8 +103,8 @@
                                 <div class="input-group">
                                     <input type="text" name="subjects[0][name]" class="form-control"
                                         placeholder="Subject Name" required>
-                                    <input type="text" name="subjects[0][grade]" class="form-control"
-                                        placeholder="Grade" required>
+                                    <input type="text" name="subjects[0][grade]" class="form-control" placeholder="Grade"
+                                        required>
                                 </div>
                             </div>
                         </div>

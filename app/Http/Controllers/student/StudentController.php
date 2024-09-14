@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; // Import the Auth facade
+use App\Models\DocumentUpload;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -42,11 +44,19 @@ class StudentController extends Controller
             $query->where('status', $status);
         }
 
-        $requestLogs = $query->get();
+        // Fetch the request logs with related documents
+        $requestLogs = $query->with('documents')->get();
 
         // Return the view with student request logs data
         return view('student.student_logs', compact('requestLogs'));
     }
+
+     // Method to download a document
+     public function downloadDocument($id)
+     {
+         $document = DocumentUpload::findOrFail($id);
+         return Storage::download('public/' . $document->file_path);
+     }
 
     public function student_request_add(Request $request)
     {
@@ -61,7 +71,7 @@ class StudentController extends Controller
                 'user_address' => 'required',
                 'user_sex' => 'required',
                 'user_doc_requested' => 'required',
-                'user_signature' => 'required|file|mimes:jpeg,png,jpg,gif|max:2048', // Validate file type and size
+                'user_mother_name' => 'required',
             ],
             [
                 'user_lname.required' => 'Last name is required',
@@ -70,18 +80,9 @@ class StudentController extends Controller
                 'user_address.required' => 'Address is required',
                 'user_sex.required' => 'Sex is required',
                 'user_doc_requested.required' => 'Document requested is required',
-                'user_signature.required' => 'E-Signature is required',
+                'user_mother_name.required' => 'Mother\'s maiden name is required',
             ],
         );
-
-        // Handle file upload
-        $signaturePath = null;
-        if ($request->hasFile('user_signature')) {
-            $file = $request->file('user_signature');
-            $fileName = time() . '_' . $file->getClientOriginalName(); // Create a unique file name
-            $file->move(public_path('signatures'), $fileName); // Move the file to the 'public/signatures' directory
-            $signaturePath = 'signatures/' . $fileName; // Store the file path to be saved in the database
-        }
 
         $inserted = Transaction::create([
             'user_id' => $request->input('user_id'),
@@ -91,7 +92,7 @@ class StudentController extends Controller
             'sex' => $request->input('user_sex'),
             'address' => $request->input('user_address'),
             'doc_requested' => $request->input('user_doc_requested'),
-            'e_signature' => $signaturePath, // Store the file path in the database
+            'mother_name' => $request->input('user_mother_name'),
         ]);
 
         if ($inserted) {

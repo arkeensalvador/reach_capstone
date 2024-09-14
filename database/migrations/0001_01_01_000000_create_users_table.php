@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('userType')->nullable();
+            $table->string('acc_status')->default('1')->nullable();
             $table->string('google_id')->nullable();
             $table->timestamps();
             
