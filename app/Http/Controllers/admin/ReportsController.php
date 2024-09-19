@@ -11,6 +11,8 @@ use DB;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Support\Facades\Response;
+use OpenAI\Client;
+use App\Services\OpenAIService;
 
 class ReportsController extends Controller
 {
@@ -269,6 +271,12 @@ class ReportsController extends Controller
         return $response;
     }
 
+    protected $openAIService;
+
+    public function __construct(OpenAIService $openAIService)
+    {
+        $this->openAIService = $openAIService;
+    }
 
     // // AI BASED ANALYSIS
     // public function analyzeGrades()
@@ -404,10 +412,20 @@ class ReportsController extends Controller
             $chartData['meanGradesBySubject'][] = $stats['mean'];
         }
 
+        // Send the conclusion data to OpenAI for analysis
+        $conclusionAnalysis = $this->openAIService->analyzeConclusion($conclusion);
+
         return response()->json([
             'analysis' => $analysis,
             'conclusion' => $conclusion,
+            'conclusionAnalysis' => $conclusionAnalysis, // Add this for the frontend
             'chartData' => $chartData,
         ]);
+
+        // return response()->json([
+        //     'analysis' => $analysis,
+        //     'conclusion' => $conclusion,
+        //     'chartData' => $chartData,
+        // ]);
     }
 }

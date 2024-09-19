@@ -8,6 +8,13 @@ use App\Http\Controllers\student\StudentController;
 use App\Http\Controllers\registrar\RegistrarController;
 use App\Http\Controllers\ML\AnalyticsController;
 use App\Http\Controllers\registrar\ImportController;
+use App\Http\Controllers\OpenAIController;
+
+Route::get('/ai-view', function () {
+    return view('openai-view');
+});
+
+Route::post('/ai-completion', [OpenAIController::class, 'getCompletion'])->name('ai.completion');
 
 Auth::routes(['register' => false]);
 

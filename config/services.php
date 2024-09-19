@@ -35,9 +35,12 @@ return [
         ],
     ],
     'google' => [
-    'client_id' => env('GOOGLE_CLIENT_ID'),
-    'client_secret' => env('GOOGLE_SECRET_ID'),
-    'redirect' => env('GOOGLE_REDIRECT'),
-],
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_SECRET_ID'),
+        'redirect' => env('GOOGLE_REDIRECT'),
+    ],
+    'deepai' => [
+        'api_key' => env('DEEPAI_API_KEY'),
+    ],
 
 ];

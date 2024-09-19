@@ -183,15 +183,12 @@
                                 resultHtml +=
                                     `<p><strong>${subject}</strong>: ${stats.grades.join(', ')}</p>`;
                             });
-                            resultHtml += '<h4>Conclusion:</h4>';
-                            resultHtml +=
-                                `<p>Subject with the Lowest Mean Grade: <strong>${data.conclusion.lowest_mean_subject}</strong> (${data.conclusion.lowest_mean_grade ? data.conclusion.lowest_mean_grade.toFixed(2) : 'N/A'})</p>`;
-                            resultHtml +=
-                                `<p>Subject with the Highest Mean Grade: <strong>${data.conclusion.highest_mean_subject}</strong> (${data.conclusion.highest_mean_grade ? data.conclusion.highest_mean_grade.toFixed(2) : 'N/A'})</p>`;
-                            resultHtml +=
-                                `<p>Subjects Needing More Focus:<br> <strong>${data.conclusion.lowest_mean_subject}</strong> has the lowest mean grade and may need more focus in teaching.</p>`;
-                            resultHtml +=
-                                `<p>Subjects with Better Performance:<br> <strong>${data.conclusion.highest_mean_subject}</strong> has the highest mean grade, suggesting better performance.</p>`;
+                            resultHtml += '<h4>OpenAI Conclusion Analysis:</h4>';
+
+                            // Display OpenAI Analysis
+                            resultHtml += '<div class="col-md-12">';
+                            resultHtml += `<p>${data.conclusionAnalysis}</p>`;
+                            resultHtml += '</div>';
 
 
                             resultHtml += '</div>';
