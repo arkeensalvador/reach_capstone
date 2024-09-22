@@ -4,7 +4,7 @@
 /*                 LOGIN CUSTOM CSS                         */
 /************************************************************/
 :root {
-    --background-image-url: url("\public\img\pic-school.jpg");
+    --background-image-url: url("/public/img/pic-school.jpg");
 }
 
 body {
@@ -145,169 +145,104 @@ body {
 /************************************************************/
 /*                 ADMIN CUSTOM CSS                         */
 /************************************************************/
-/* Flexbox-based responsive layout with integrated custom styles */
 
-html, body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
-.container-fluid {
-    padding: 0;
-    /* background-color: whitesmoke; */
-}
-
-.row.no-gutters {
-    margin: 0;
-    height: 100vh;
-}
-
-/* Sidebar */
-.left-sidebar {
-    height: 100%;
-    border-right: 5px solid #800000;
-    padding-right: 0 !important;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: whitesmoke;
-}
-
-/* Content Area */
-.right-content {
-    display: flex;
-    flex-direction: column;
-    padding-top: 1rem !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    height: 100vh;
-    background-color: whitesmoke;
-    overflow: hidden;
-}
-
-/* Card Body with Overflow Handling */
-.custom-card-body {
-    flex-grow: 1;
-    padding: 5px !important;
-    overflow-y: auto;
-}
-
-/* Custom Table */
 .custom-table {
     height: 90vh;
-    width: 100%; /* Adjust width to be responsive */
-    max-width: 180vh;
+    width: 180vh;
     border-radius: 1rem;
     border-color: #800000;
     border-width: 0.5rem;
     border-top-width: 2.5rem;
 }
-
-/* Table Handling */
-.table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
+.left-sidebar {
+    height: 90vh;
+    border-right: 5px solid #800000;
+    padding-right: 0 !important;
+}
+.right-content {
+    padding-top: 1rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+.custom-card-body {
+    padding: 5px !important;
+}
+/* Optional CSS for spacing and layout */
+.row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
+.col-md-3,
+.col-md-9 {
+    padding-left: 0;
+    padding-right: 0;
+}
 .table {
     border: 2px solid #800000;
-    width: 100%;
-    max-width: 100%;
-    table-layout: auto;
 }
-
-/* Navigation */
 .navlist {
     list-style-type: none;
     text-align: end;
     line-height: 3;
     font-weight: bold;
 }
-
 .navlist a {
     text-decoration: none !important;
 }
-
-.list, .list-logout {
+.list:hover,
+.list-logout:hover,
+.list a:hover {
+    background-color: #800000;
+    color: whitesmoke;
+    /* margin-bottom: .5rem; */
+    padding-right: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.list {
+    /* margin-right: 1rem; */
     padding-right: 1rem;
     color: #800000;
 }
-
-.list-logout {
-    margin-top: 5rem;
-}
-
 .list a {
     text-decoration: none;
     color: #800000;
 }
 
-.list:hover, .list-logout:hover, .list a:hover {
+.list-logout {
+    /* margin-right: 1rem; */
+    padding-right: 1rem;
+    color: #800000;
+    margin-top: 5rem;
+}
+
+div.dt-container select.dt-input {
+    margin-right: 4px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: scroll;
+    max-height: 60vh;
+}
+.card {
+    margin: 5px;
+}
+.active {
     background-color: #800000;
     color: whitesmoke;
+    /* margin-bottom: .5rem; */
     padding-right: 1rem;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
-.form-select-sm {
-    width: fit-content;
-}
-li.active {
-    background-color: #800000;
-    color: whitesmoke;
-    /* padding-right: 1rem; */
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-}
 
-/* Student Home Box */
-.student-home-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60vh; /* Box takes the full height of the container */
-    background-color: #800000;
-    padding: 20px;
-    border-top-right-radius: 4rem;
-    border-bottom-left-radius: 4rem;
-}
-
-.student-home-box img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* Text Styling */
-.request-text {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: bold;
-    font-size: 30px;
+.custom-hr {
+    height: 1rem;
     color: #800000;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.online-text {
-    font-family: "Impact", sans-serif;
-    font-weight: bold;
-    font-size: 42px;
-    color: #ff6600;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
-
-.custom-badge-bg-student {
-    --bs-bg-opacity: 1;
-    background-color: #ff6600 !important;
-}
-
-/* DataTable Fixes */
-.dataTables_wrapper {
-    width: 100%;
 }
 
 table.dataTable th.dt-type-numeric,
@@ -329,104 +264,49 @@ table.dataTable tfoot td {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    /* font-family: 'Bebas Neue', sans-serif; */
+    /* letter-spacing: 5px; */
+    /* font-size: 1.3rem; */
     font-weight: bold;
 }
 
-.card-container {
+.student-home-box {
     display: flex;
-    /* overflow-y: scroll; */
-    /* max-height: 60vh; */
-    flex-direction: column;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; /* Ensure the box takes the full height of the container */
+    background-color: #800000; /* Optional: Add a background color */
+    padding: 20px;
+    border-top-right-radius: 4rem;
+    border-bottom-left-radius: 4rem;
 }
 
-.card {
-    margin: 5px;
+.student-home-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure the logo is contained within the box */
 }
 
-/* Spacing Fixes */
-.row {
-    margin-left: 0;
-    margin-right: 0;
+/* Style for the "REQUEST YOUR REQUIREMENTS" text */
+.request-text {
+    font-family: "Bebas Neue", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 30px; /* Adjust the size as needed */
+    color: #800000; /* Dark red color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
 }
 
-.col-md-3, .col-md-9 {
-    padding-left: 0;
-    padding-right: 0;
+/* Style for the "VIA ONLINE" text */
+.online-text {
+    font-family: "Impact", sans-serif; /* Replace with the closest matching font */
+    font-weight: bold;
+    font-size: 42px; /* Adjust the size as needed */
+    color: #ff6600; /* Bright orange color */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Slight letter spacing for clarity */
 }
-
-.custom-hr {
-    height: 1rem;
-    color: #800000;
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-    .custom-table {
-        width: 100%; /* Adjust table to fit smaller screens */
-    }
-    
-    .left-sidebar {
-        border-right: none;
-        height: auto;
-    }
-
-    .right-content {
-        height: auto;
-    }
-}
-
-a {
-    text-decoration: none;
-}
-div.dt-container .dt-paging .dt-paging-button {
-    padding: 0 !important;
-}
-.custom-select-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.custom-select {
-    position: relative;
-    display: block;
-    width: 100%;
-}
-
-.custom-select select {
-    display: none; /* Hide the default dropdown */
-}
-
-.custom-select-items {
-    position: absolute;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    max-height: 150px; /* Adjust height as needed */
-    overflow-y: auto;
-    width: 100%;
-    z-index: 1000;
-}
-
-.custom-select-item {
-    padding: 10px;
-    cursor: pointer;
-}
-
-.custom-select-item:hover {
-    background-color: #f1f1f1;
-}
-/* Match Select2 height with other form controls */
-.select2-container--default .select2-selection--single {
-    height: 2.4rem !important; /* Adjust the height as needed */
-    padding: 0.3rem 0.2rem; /* Adjust padding to match the form controls */
-    border: 1px solid #ced4da; /* Border color to match */
-    border-radius: 0.25rem; /* Border radius to match */
-}
-
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: 1.5; /* Adjust line height to align text properly */
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 100%; /* Make sure the arrow height matches */
+.custom-badge-bg-student {
+    --bs-bg-opacity: 1;
+    background-color: #ff6600 !important;
 }

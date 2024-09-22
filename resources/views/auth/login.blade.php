@@ -13,8 +13,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('img/logo-school.png') }}">
 
     <!-- Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Styles -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -86,11 +88,11 @@
                             {{ __('Login') }}
                         </button>
 
-                        @if (Route::has('password.request'))
+                        {{-- @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
-                        @endif
+                        @endif --}}
                     </div>
                 </form>
             </div>
